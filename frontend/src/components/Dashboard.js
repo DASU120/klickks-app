@@ -1,0 +1,54 @@
+// Dashboard.js
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+
+const Dashboard = () => {
+  const [email, setEmail] = useState('');
+  const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        const res = await axios.get('http://localhost:5000/api/auth/user', {
+          withCredentials: true,
+        });
+        setEmail(res.data.email);
+        setLoading(false);
+      } catch (err) {
+        // Redirect to login if not authenticated
+        navigate('/login');
+      }
+    };
+
+    fetchUser();
+  }, [navigate]);
+
+  const handleLogout = async () => {
+    try {
+      await axios.post(
+        'http://localhost:5000/api/auth/logout',
+        {},
+        { withCredentials: true }
+      );
+      navigate('/login');
+    } catch (err) {
+      console.error('Logout failed', err);
+    }
+  };
+
+  if (loading) return <p>Loading...</p>;
+
+  return (
+    <div className="dashboard">
+      <h2>Welcome, {email}!</h2>
+      <p>You are successfully logged in.</p>
+      <button onClick={handleLogout} className="logout-btn">
+        Logout
+      </button>
+    </div>
+  );
+};
+
+export default Dashboard;
