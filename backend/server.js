@@ -6,13 +6,13 @@ const authRoutes = require('./routes/auth');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
-
 app.use(
   cors({
-    origin: ['http://localhost:3000', 'https://your-frontend.vercel.app'],
+    origin: ['http://localhost:3000', 'https://klickks-app-ad.vercel.app/'], 
     credentials: true,
   })
 );
+
 
 app.use(express.json());
 
