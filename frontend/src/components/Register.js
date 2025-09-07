@@ -17,7 +17,7 @@ const Register = () => {
 
     try {
       const res = await axios.post(
-        'https://klickks-app-1.onrender.com/api/auth/register',
+        'https://klickks-app.onrender.com/api/auth/register',
         { email, password },
         { withCredentials: true } 
       );
