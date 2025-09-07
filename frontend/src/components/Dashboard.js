@@ -10,14 +10,15 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const res = await axios.get('https://klickks-app.onrender.com/api/auth/user', {
-          withCredentials: true,
-        });
+        const res = await axios.get(
+          'https://klickks-app-1.onrender.com/api/auth/user',
+          { withCredentials: true }
+        );
         setEmail(res.data.email);
-        setLoading(false);
       } catch (err) {
-        // Redirect to login if not authenticated
-        navigate('/login');
+        navigate('/login'); // redirect if not authenticated
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -27,7 +28,7 @@ const Dashboard = () => {
   const handleLogout = async () => {
     try {
       await axios.post(
-        'https://klickks-app.onrender.com/api/auth/logout',
+        'https://klickks-app-1.onrender.com/api/auth/logout',
         {},
         { withCredentials: true }
       );

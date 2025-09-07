@@ -1,4 +1,3 @@
-// Register.js
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
@@ -17,19 +16,18 @@ const Register = () => {
     setSuccess('');
 
     try {
-      const res = await axios.post('https://klickks-app.onrender.com/api/auth/register', {
-        email,
-        password,
-      });
+      const res = await axios.post(
+        'https://klickks-app-1.onrender.com/api/auth/register',
+        { email, password },
+        { withCredentials: true } 
+      );
 
       if (res.status === 201) {
         setSuccess('Registration successful! Redirecting to login...');
         setTimeout(() => navigate('/login'), 1500);
       }
     } catch (err) {
-      setError(
-        err.response?.data?.message || 'Registration failed. Please try again.'
-      );
+      setError(err.response?.data?.message || 'Registration failed. Please try again.');
     }
   };
 
