@@ -1,4 +1,3 @@
-// Dashboard.js
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
@@ -11,7 +10,7 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const res = await axios.get('http://localhost:5000/api/auth/user', {
+        const res = await axios.get('https://klickks-app.onrender.com/api/auth/user', {
           withCredentials: true,
         });
         setEmail(res.data.email);
@@ -28,7 +27,7 @@ const Dashboard = () => {
   const handleLogout = async () => {
     try {
       await axios.post(
-        'http://localhost:5000/api/auth/logout',
+        'https://klickks-app.onrender.com/api/auth/logout',
         {},
         { withCredentials: true }
       );

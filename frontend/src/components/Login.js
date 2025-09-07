@@ -1,4 +1,4 @@
-// Login.js
+// frontend/Login.js
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
@@ -16,12 +16,12 @@ const Login = () => {
 
     try {
       const res = await axios.post(
-        'http://localhost:5000/api/auth/login',
-        { email, password },
-        { withCredentials: true } // Important: send cookies
+        'https://klickks-app.onrender.com/api/auth/login',
+        { email, password }
       );
 
-      if (res.status === 200) {
+      if (res.data.token) {
+        localStorage.setItem("token", res.data.token); // ✅ Save JWT
         navigate('/dashboard');
       }
     } catch (err) {
