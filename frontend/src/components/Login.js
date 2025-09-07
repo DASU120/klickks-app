@@ -15,7 +15,7 @@ const Login = () => {
 
     try {
       await axios.post(
-        'https://klickks-app.onrender.com/api/auth/login',
+        'https://klickks-app-dasu.onrender.com/api/auth/login',
         { email, password },
         { withCredentials: true } // ✅ allow cookies
       );

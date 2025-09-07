@@ -11,7 +11,7 @@ const Dashboard = () => {
     const fetchUser = async () => {
       try {
         const res = await axios.get(
-          'https://klickks-app.onrender.com/api/auth/user',
+          'https://klickks-app-dasu.onrender.com/api/auth/user',
           { withCredentials: true }
         );
         setEmail(res.data.email);
@@ -28,7 +28,7 @@ const Dashboard = () => {
   const handleLogout = async () => {
     try {
       await axios.post(
-        'https://klickks-app.onrender.com/api/auth/logout',
+        'https://klickks-app-dasu.onrender.com/api/auth/logout',
         {},
         { withCredentials: true }
       );
